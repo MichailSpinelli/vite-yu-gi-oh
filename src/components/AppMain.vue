@@ -2,8 +2,6 @@
 //importo lo store
 import { store } from '../store.js'
 
-//importo axios
-import axios from 'axios';
 
   export default {
     data () {
@@ -12,7 +10,6 @@ import axios from 'axios';
       };
     },
     methods: {
-      axios
     }
   }
 </script>
@@ -25,18 +22,11 @@ import axios from 'axios';
       </button>
 
       <div class="card-container">
-        <ul class="card">
-          <li v-for="(cards, index) in items" ::key="index" class="card-image">
-            <img src="" alt="">
-            {{  }}
-          </li>
-          <div>
-            title
-          </div>
-          <div>
-            type
-          </div>
-        </ul>
+        <div class="card"
+        v-for="(archetype, i) in store.cards"
+        :key="i">
+        
+        </div>
       </div>
 
     </div>
@@ -44,4 +34,24 @@ import axios from 'axios';
 </template>
 
 <style lang="scss" scoped>
+.container{
+  background-color: #D48F38;
+  padding-top: 20px;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-bottom: 50px;
+}
+
+.card-container {
+  background-color: white;
+  padding: 10px;
+}
+
+.card {
+  background-color: #D48F38;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
 </style>

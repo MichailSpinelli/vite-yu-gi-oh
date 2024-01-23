@@ -2,9 +2,9 @@
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import AppFooter from './components/AppFooter.vue';
+import axios from 'axios';
 
 import { store } from './store.js';
-
 
   export default {
     data () {
@@ -19,11 +19,38 @@ import { store } from './store.js';
       AppFooter
     },
     methods: {
-
+      getAllCards() {
+        axios
+        .get(this.store.baseUrl, {
+          params : {
+            name: this.store.searchName,
+            archetype: this.store.searchArchetype,
+          }
+        })
+        .then((response) => {
+          console.log(response);
+          this.store.cards = response.data.results;
+        })
+        .catch((error) => {
+          this.store.cards = [];
+        })
+        .finally(() => {
+          console.log('funziona?')
+        });
+        // prende le cards con axios dall'api e le mette in store.cards
+      },
+      //getAllArchs() {
+        // prende gli archetypes con axios dall'api e le mette in store.archs
+      //},
+      //searchCards() {
+        // cerca le card con l'archetype === store.selectedArch con l'api come param metti archetype = store.selectedArch
+      //}
     },
-    mounted() {
+    /*mounted() {
       // Chiamata axios e salva risultati in store.cards
-    }
+      this.getAllCards()
+      //this.getAllArchs()
+    }*/
     
   }
 </script>
@@ -39,28 +66,4 @@ import { store } from './store.js';
 <style lang="scss" scoped>
 @use "assets/scss/main.scss" as *;
 @import "assets/scss/partials/reset.scss";
-
-
-//main
-
-.container{
-  background-color: #D48F38;
-  padding-top: 20px;
-  padding-left: 200px;
-  padding-right: 200px;
-  padding-bottom: 50px;
-}
-
-.card-container {
-  background-color: white;
-  padding: 10px;
-}
-
-.card {
-  background-color: #D48F38;
-  padding: 20px;
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-}
 </style>
