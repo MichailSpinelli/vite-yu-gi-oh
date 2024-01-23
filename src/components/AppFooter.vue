@@ -1,8 +1,12 @@
 <script>
+//importo lo store
+
+import { store } from '../store.js'
+
   export default {
     data () {
       return {
-
+        store
       };
     },
     methods: {
@@ -18,5 +22,5 @@
 </template>
 
 <style lang="scss" scoped>
-    @use "../assets/scss/partials/reset.scss"
+    @use "../assets/scss/partials/reset.scss";
 </style>

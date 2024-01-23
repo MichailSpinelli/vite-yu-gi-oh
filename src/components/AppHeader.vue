@@ -1,8 +1,12 @@
 <script>
+//importo lo store
+
+import { store } from '../store.js'
+
   export default {
     data () {
       return {
-
+        store,
       };
     },
     methods: {
@@ -13,10 +17,18 @@
 
 <template>
     <header>
+    <div>
+      logo
+    </div>
 
-    </header>
+    <div>
+      <h1>
+        Yu-Gi-Oh Api
+      </h1>
+    </div>
+  </header>
 </template>
 
 <style lang="scss" scoped>
-    @use "../assets/scss/partials/reset.scss"
+    @import "../assets/scss/partials/reset.scss";
 </style>
